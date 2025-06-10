@@ -41,12 +41,13 @@
 #Movie-card {
   width: 250px;
   height: 350px;
-  margin-top: 50px;
-  border-radius: 10%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 10%;
+  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
@@ -73,6 +74,23 @@
   text-align: center;
   padding: 10px;
   background-color: rgb(240, 240, 240);
+}
+
+#Load-more {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+footer {
+  color: white;
+  background-color: #282c34;
+  height: 80px;
+}
+footer p {
+  width: 99%;
+  padding-top: 35px;
+  display: flex;
+  justify-content: end;
 }
 
 @media (max-width: 600px) {
