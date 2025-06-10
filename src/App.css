@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -5,11 +10,69 @@
 .App-header {
   background-color: #282c34;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   color: white;
   padding: 20px;
+}
+
+.App-header img {
+  height: 50px;
+  width: 50px;
+  margin: 0px auto;
+}
+
+#Movie-container {
+  background-color: rgb(188, 188, 188);
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#Movie-list {
+  width: 93%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: auto;
+}
+
+#Movie-card {
+  width: 250px;
+  height: 350px;
+  margin-top: 50px;
+  border-radius: 10%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+#Movie-card:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+#Movie-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  flex-grow: 1;
+}
+
+#Movie-card-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(240, 240, 240);
 }
 
 @media (max-width: 600px) {
