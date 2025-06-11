@@ -23,6 +23,10 @@
   margin: 0px auto;
 }
 
+.App-header h1:hover {
+  cursor: pointer;
+}
+
 #filter {
   display: flex;
   justify-content: space-between;
@@ -39,7 +43,7 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 1rem;
   margin: auto;
 }
 

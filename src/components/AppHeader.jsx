@@ -1,10 +1,10 @@
 import "../App.css"
 
-function AppHeader() {
+function AppHeader({ onClick }) {
     return (
         <header>
             <img src="../../public/movie.png"/>
-            <h1>Flixster</h1>
+            <h1 onClick={onClick}>Flixster</h1>
         </header>
     )
 }

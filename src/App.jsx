@@ -14,6 +14,7 @@ import "./App.css";
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const [resetDisplay, setResetDisplay] = useState(false);
 
   const [displayMovieData, setDisplayMovieData] = useState([]);
@@ -28,8 +29,22 @@ const App = () => {
     setPageNumber((prev) => 1);
   };
 
+  const handleSortChange = (option) => {
+    console.log(option);
+    setSortOption((prev) => option);
+    setResetDisplay((prev) => true);
+    setPageNumber((prev) => 1);
+  }
+
+  const goToHome = () => {
+    setSearchQuery((prev) => "");
+    setSortOption((prev) => "");
+    setResetDisplay((prev) => true);
+    setPageNumber((prev) => 1);
+  }
+
   const loadMovies = async () => {
-    let data = await getMovieData(pageNumber, searchQuery);
+    let data = await getMovieData(pageNumber, searchQuery, sortOption);
     if (data.results) {
       setDisplayMovieData((prev) => {
         if (data.page === pageNumber) {
@@ -49,15 +64,15 @@ const App = () => {
 
     loadMovies();
     setResetDisplay((prev) => false);
-  }, [searchQuery, pageNumber]);
+  }, [searchQuery, pageNumber, sortOption]);
 
   return (
     <div className="App">
       <div className="App-header">
-        <AppHeader />
+        <AppHeader onClick={goToHome} />
         <div id="filter">
           <SearchBar onSubmit={handleSearchChange}/>
-          <SelectSort/>
+          <SelectSort onChange={handleSortChange} />
         </div>
       </div>
       <div id="Movie-container">
