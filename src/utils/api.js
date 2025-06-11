@@ -26,9 +26,9 @@ export async function getMovieData(pageNumber, movieName) {
     }
 }
 
-export async function getGenres() {
+export async function getMovieInformation(id) {
     try {
-        const resp = await fetch(`https://api.themoviedb.org/3/genre/movie/list`, options);
+        const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options);
         if (!resp.ok) {
             throw new Error('Failed to fetch available genres');
         }
