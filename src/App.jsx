@@ -6,23 +6,30 @@ import SelectSort from "./components/SelectSort.jsx"
 import MovieList from "./components/MovieList";
 import LoadMore from "./components/LoadMore.jsx";
 import Footer from "./components/Footer.jsx";
-import data from "./data/data.js";
-import fetchMovieData from "./utils/api.js";
+
+import getMovieData from "./utils/api.js";
 
 import "./App.css";
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [resetDisplay, setResetDisplay] = useState(false);
+
   const [displayMovieData, setDisplayMovieData] = useState([]);
 
   const handleLoadMore = () => {
     setPageNumber((prev) => prev + 1);
-    console.log("Load more movies");
+  };
+
+  const handleSearchChange = (name) => {
+    setSearchQuery((prev) => name);
+    setResetDisplay((prev) => true);
+    setPageNumber((prev) => 1);
   };
 
   const loadMovies = async () => {
-    const data = await fetchMovieData(pageNumber);
+    let data = await getMovieData(pageNumber, searchQuery);
     if (data.results) {
       setDisplayMovieData((prev) => {
         if (data.page === pageNumber) {
@@ -36,9 +43,12 @@ const App = () => {
   }
   
   useEffect(() => {
-    if (!searchQuery) {
-      loadMovies();
+    if (resetDisplay) {
+      setDisplayMovieData((prev) => []);
     }
+
+    loadMovies();
+    setResetDisplay((prev) => false);
   }, [searchQuery, pageNumber]);
 
   return (
@@ -46,7 +56,7 @@ const App = () => {
       <div className="App-header">
         <AppHeader />
         <div id="filter">
-          <SearchBar />
+          <SearchBar onSubmit={handleSearchChange}/>
           <SelectSort/>
         </div>
       </div>

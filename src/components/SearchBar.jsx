@@ -1,12 +1,24 @@
 import "../App.css"
 
-function SearchBar() {
+function SearchBar({ onSubmit }) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const input = event.target.elements.movieInput.value;
+        onSubmit(input);
+    }
+    
+    const handleReset = (event) => {
+        event.preventDefault();
+        event.target.elements.movieInput.value = "";
+        onSubmit("");
+    }
+
     return (
         <div id="search-container">
-            <form>
-                <input placeholder="Search"/>
-                <button>Search</button>
-                <button>Clear</button>
+            <form onReset={handleReset} onSubmit={handleSubmit}>
+                <input name="movieInput" type="text" placeholder="Search"/>
+                <button type="submit">Search</button>
+                <button type="reset">Clear</button>
             </form>
         </div>
     )

@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard"
 import "../App.css"
 import { parseData } from "../utils/utils.js"
 
-function MovieList({props}) {
+function MovieList({ props }) {
     const movieData = props?.map(obj => {
         return parseData(obj);
     });
