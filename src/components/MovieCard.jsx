@@ -3,7 +3,6 @@ import "../App.css"
 function MovieCard({ onClick, poster, title, rating}) {
     return (
         <div id="Movie-card" onClick={onClick}>
-            {console.log(poster)}
             <img src={poster} alt={`poster for ${title}`}/>
             <div id="Movie-card-footer">
                 <h4>{title}</h4>

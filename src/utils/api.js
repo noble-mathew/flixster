@@ -6,6 +6,7 @@ const options = {
     }
 };
 
+// data that displays the movie cards and most of the modal information
 export async function getMovieData(pageNumber, movieName) {
     let webURL;
     if (movieName) {
@@ -26,6 +27,7 @@ export async function getMovieData(pageNumber, movieName) {
     }
 }
 
+// gets all the information relevant to the specific movie
 export async function getMovieInformation(id) {
     try {
         const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options);

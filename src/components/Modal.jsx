@@ -4,9 +4,16 @@ import { getMovieInformation } from "../utils/api";
 import "../App.css"
 
 function Modal({ movie, onClose }) {
-    const [genres, setGenres] = useState([])
-    const [movieInformation, setMovieInformation] = useState([]);
+    const [genres, setGenres] = useState([]) // stores the genres in an array
+    const [movieInformation, setMovieInformation] = useState({}); // stores the information for the movie
 
+    // getting the name of the genre using the associated id
+    const getGenreName = (id) => {
+        const genre = genres.find((name) => name.id === id);
+        return genre?.name || "Unknown";
+    };
+
+    // want the information for the movie to load as soon as the modal is opened and only then
     useEffect(() => {
         const fetchMovieInformation = async () => {
             const data = await getMovieInformation(movie.id);
@@ -20,15 +27,6 @@ function Modal({ movie, onClose }) {
 
         fetchMovieInformation();
     }, []);
-
-    useEffect(() => {
-        console.log(genres);
-    }, [genres]);
-
-    const getGenreName = (id) => {
-        const genre = genres.find((name) => name.id === id);
-        return genre?.name || "Unknown";
-    };
 
     return (
         <div id="Modal">

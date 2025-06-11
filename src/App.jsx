@@ -58,11 +58,13 @@ const App = () => {
     setPageNumber((prev) => 1);
   }
 
+  // function that handles when the modal needs to be opened
   const openModal = (movie) => {
     setModalMovie(movie);         
     setDisplayModal(true);       
   };
 
+  // function that handles when the modal needs to be closed
   const closeModal = () => {
     setDisplayModal(false);  
     setModalMovie({});            
@@ -86,6 +88,8 @@ const App = () => {
     };
   }
   
+  // either display completely new data or add on to our existing data
+  // only change display when search or sort are done or user chooses to load more
   useEffect(() => {
     if (resetDisplay) {
       setDisplayMovieData((prev) => []);
