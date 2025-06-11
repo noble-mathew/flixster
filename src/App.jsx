@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {getMovieData} from "./utils/api.js";
 
 import AppHeader from "./components/AppHeader";
 import SearchBar from "./components/SearchBar.jsx";
@@ -8,8 +9,6 @@ import Modal from "./components/Modal.jsx"
 import LoadMore from "./components/LoadMore.jsx";
 import Footer from "./components/Footer.jsx";
 
-import getMovieData from "./utils/api.js";
-
 import "./App.css";
 
 const App = () => {
@@ -18,6 +17,8 @@ const App = () => {
   const [sortOption, setSortOption] = useState("");
   const [resetDisplay, setResetDisplay] = useState(false);
   const [displayMovieData, setDisplayMovieData] = useState([]);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [modalMovie, setModalMovie] = useState({});
 
   // function to handle when the load more button is pressed
   const handleLoadMore = () => {
@@ -38,14 +39,6 @@ const App = () => {
     setPageNumber((prev) => 1);
   }
 
-  // function that if the header is pressed the page goes back to the now playing page
-  const goToHome = () => {
-    setSearchQuery((prev) => "");
-    setSortOption((prev) => "");
-    setResetDisplay((prev) => true);
-    setPageNumber((prev) => 1);
-  }
-
   // sorting the movies based on what option is selected
   const sortMovies = () => {
     if (sortOption === "title") {
@@ -56,6 +49,24 @@ const App = () => {
       setDisplayMovieData(displayMovieData.sort((a, b) => Date.parse(b.release_date) - Date.parse(a.release_date)));
     }
   }
+
+  // function that if the header is pressed the page goes back to the now playing page
+  const goToHome = () => {
+    setSearchQuery((prev) => "");
+    setSortOption((prev) => "");
+    setResetDisplay((prev) => true);
+    setPageNumber((prev) => 1);
+  }
+
+  const openModal = (movie) => {
+    setModalMovie(movie);         
+    setDisplayModal(true);       
+  };
+
+  const closeModal = () => {
+    setDisplayModal(false);  
+    setModalMovie({});            
+  };
 
   // updating what movies are displayed
   const loadMovies = async () => {
@@ -84,9 +95,6 @@ const App = () => {
     setResetDisplay((prev) => false);
   }, [searchQuery, pageNumber, sortOption]);
 
-  useEffect(() => {
-  }, [displayMovieData]);
-
   return (
     <div className="App">
       <div className="App-header">
@@ -97,8 +105,9 @@ const App = () => {
         </div>
       </div>
       <main id="Movie-container">
-        <MovieList props={displayMovieData} />
+        <MovieList props={displayMovieData} onClick={openModal}/>
         <LoadMore onClick={handleLoadMore} />
+        {displayModal && <Modal onClose={closeModal} movie={modalMovie} />}
       </main>
       <Footer/>
     </div>

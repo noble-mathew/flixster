@@ -1,9 +1,10 @@
+import { parseData } from "../utils/utils.js"
+
 import MovieCard from "./MovieCard"
 
 import "../App.css"
-import { parseData } from "../utils/utils.js"
 
-function MovieList({ props }) {
+function MovieList({ props, onClick }) {
     const movieData = props?.map(obj => {
         return parseData(obj);
     });
@@ -11,8 +12,8 @@ function MovieList({ props }) {
     return (
         <div id="Movie-list">
             {
-                movieData?.map(obj => {
-                    return <MovieCard key={obj.id} poster={obj.poster} title={obj.title} rating={obj.rating}/>
+                movieData?.map(movie => {
+                    return <MovieCard onClick={() => onClick(movie)} key={movie.id} poster={movie.poster} title={movie.title} rating={movie.rating}/>
                 })
             }
         </div>

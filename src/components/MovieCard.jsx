@@ -1,12 +1,12 @@
 import "../App.css"
 
-function MovieCard(data) {
+function MovieCard({ onClick, poster, title, rating}) {
     return (
-        <div id="Movie-card">
-            <img src={`https://image.tmdb.org/t/p/w500${data.poster}`} alt={`poster for ${data.title}`}/>
+        <div id="Movie-card" onClick={onClick}>
+            <img src={`https://image.tmdb.org/t/p/w500${poster}`} alt={`poster for ${title}`}/>
             <div id="Movie-card-footer">
-                <h4>{data.title}</h4>
-                <p>Rating: {data.rating}</p>
+                <h4>{title}</h4>
+                <p>Rating: {rating}</p>
             </div>
         </div>
     )

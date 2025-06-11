@@ -6,7 +6,7 @@ const options = {
     }
 };
 
-async function getMovieData(pageNumber, movieName) {
+export async function getMovieData(pageNumber, movieName) {
     let webURL;
     if (movieName) {
         webURL = `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=${import.meta.env.VITE_API_KEY}&page=${pageNumber}`;
@@ -26,4 +26,15 @@ async function getMovieData(pageNumber, movieName) {
     }
 }
 
-export default getMovieData;
+export async function getGenres() {
+    try {
+        const resp = await fetch(`https://api.themoviedb.org/3/genre/movie/list`, options);
+        if (!resp.ok) {
+            throw new Error('Failed to fetch available genres');
+        }
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.error(`Fetch error: ${error}`);
+    }
+}
