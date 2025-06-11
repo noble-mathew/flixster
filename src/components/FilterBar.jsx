@@ -2,12 +2,14 @@ import "../App.css"
 
 function FilterBar() {
     return (
-        <div>
-            <form>
-                <input placeholder="Search"/>
-                <button>Search</button>
-                <button>Clear</button>
-            </form>
+        <div id="filter">
+            <div id="search-container">
+                <form>
+                    <input placeholder="Search"/>
+                    <button>Search</button>
+                    <button>Clear</button>
+                </form>
+            </div>
 
             <select>
                 <option hidden>Sort By</option>

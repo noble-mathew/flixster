@@ -1,9 +1,9 @@
 import "../App.css"
 
-function LoadMore() {
+function LoadMore({ onClick }) {
     return (
         <div>
-            <button id="Load-more">Load More</button>
+            <button onClick={onClick} id="Load-more">Load More</button>
         </div>
     )
 }
