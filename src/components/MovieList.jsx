@@ -9,13 +9,13 @@ function MovieList({ props }) {
     });
 
     return (
-        <main id="Movie-list">
+        <div id="Movie-list">
             {
                 movieData?.map(obj => {
                     return <MovieCard key={obj.id} poster={obj.poster} title={obj.title} rating={obj.rating}/>
                 })
             }
-        </main>
+        </div>
     );
 }
 

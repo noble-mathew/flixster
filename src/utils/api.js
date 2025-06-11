@@ -6,13 +6,10 @@ const options = {
     }
 };
 
-async function getMovieData(pageNumber, movieName, sortOption) {
-    console.log(pageNumber, movieName, sortOption);
+async function getMovieData(pageNumber, movieName) {
     let webURL;
     if (movieName) {
         webURL = `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=${import.meta.env.VITE_API_KEY}&page=${pageNumber}`;
-    } else if (sortOption) { 
-        webURL = `https://api.themoviedb.org/3/discover/movie?sort_by=${sortOption}&api_key=${import.meta.env.VITE_API_KEY}&page=${pageNumber}`;
     } else {
         webURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&page=${pageNumber}`;
     }
@@ -23,7 +20,6 @@ async function getMovieData(pageNumber, movieName, sortOption) {
             throw new Error('Failed to fetch movie data');
         }
         const data = await resp.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error(`Fetch error: ${error}`);
