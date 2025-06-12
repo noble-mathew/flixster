@@ -40,13 +40,13 @@ const App = () => {
   }
 
   // sorting the movies based on what option is selected
-  const sortMovies = () => {
+  const sortMovies = (movieData) => {
     if (sortOption === "title") {
-      setDisplayMovieData(displayMovieData.sort((a, b) => a.title.localeCompare(b.title)));
+      return movieData.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortOption === "rating") { 
-      setDisplayMovieData(displayMovieData.sort((a, b) => b.vote_average - a.vote_average));
+      return movieData.sort((a, b) => b.vote_average - a.vote_average);
     } else if (sortOption === "release") {
-      setDisplayMovieData(displayMovieData.sort((a, b) => Date.parse(b.release_date) - Date.parse(a.release_date)));
+      return movieData.sort((a, b) => Date.parse(b.release_date) - Date.parse(a.release_date));
     }
   }
 
@@ -74,14 +74,15 @@ const App = () => {
   const loadMovies = async () => {
     let data = await getMovieData(pageNumber, searchQuery);
     if (data.results) {
-      if (sortOption) {
-        sortMovies();
-      }
       setDisplayMovieData((prev) => {
         if (data.page === pageNumber) {
           const newIds = new Set(prev.map(item => item.id));
           const filtered = data.results.filter(item => !newIds.has(item.id));
-          return [...prev, ...filtered];
+          const merged = [...prev, ...filtered];
+          if (sortOption) {
+            return sortMovies(merged);
+          }
+          return merged
         }
         return prev;
       })

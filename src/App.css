@@ -72,11 +72,14 @@
   z-index: 2;
 }
 
-#watch-icon #favorite-icon {
-  background-color: rgba(255, 255, 255, 0.9);
+#watch-icon, #favorite-icon {
+  background-color: rgba(255, 255, 255, 0.3);
   padding: 4px;
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); 
+  border-radius: 35%;
+  -webkit-border-radius: 35%;
+  -moz-border-radius: 35%;
+  -ms-border-radius: 35%;
+  -o-border-radius: 35%;
 }
 
 #watch-icon:hover, #favorite-icon:hover {
