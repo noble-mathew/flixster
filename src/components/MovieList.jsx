@@ -4,10 +4,15 @@ import MovieCard from "./MovieCard"
 
 import "../App.css"
 
-function MovieList({ props, handlers, favoriteMovies, watchedMovies }) {
-    const movieData = props?.map(obj => {
-        return parseData(obj);
-    });
+function MovieList({ props, handlers, favoriteMovies, watchedMovies, ifParse }) {
+    let movieData;
+    if (ifParse) {
+        movieData = props?.map(obj => {
+            return parseData(obj);
+        });
+    } else {
+        movieData = props;
+    }
 
     return (
         <div id="Movie-list">

@@ -2,13 +2,9 @@ import { useState, useEffect } from "react";
 
 function SearchBar({ onSubmit, value }) {
     const [input, setInput] = useState(value);
-    
-    useEffect(() => {
-    setInput(value);
-    }, [value]);
 
     const handleChange = (e) => {
-    setInput(e.target.value);
+        setInput(e.target.value);
     };
 
     const handleSubmit = (event) => {

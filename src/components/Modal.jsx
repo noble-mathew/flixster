@@ -75,7 +75,7 @@ function Modal({ movie, onClose }) {
                                 return <li key={obj.id}>{getGenreName(obj.id)}</li>;
                             })}
                     </ul>
-                    {movieTrailer && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${movieTrailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />}
+                    {movieTrailer && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${movieTrailer.key}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />}
                     </div>
                     <p id="Modal-close" onClick={onClose}><strong>&times;</strong></p>
                 </div>
