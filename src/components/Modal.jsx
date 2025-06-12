@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
-import { getMovieInformation } from "../utils/api";
+import { getMovieInformation, getMovieVideo } from "../utils/api";
 
 import "../App.css"
 
 function Modal({ movie, onClose }) {
     const [genres, setGenres] = useState([]) // stores the genres in an array
     const [movieInformation, setMovieInformation] = useState({}); // stores the information for the movie
+    const [movieVideo, setMovieVideo] = useState(null) // stores all the videos associated with this movie
+    const [movieTrailer, setMovieTrailer] = useState(null); // stores the latest trailer
 
     // getting the name of the genre using the associated id
     const getGenreName = (id) => {
         const genre = genres.find((name) => name.id === id);
         return genre?.name || "Unknown";
     };
+
+    // getting the latest trailer for the movie selected
+    const getMovieTrailer = () => {
+        return movieVideo?.find(
+            (video) =>
+                video.site === "YouTube" &&
+                video.name.toLowerCase().includes("official trailer")
+        );
+    };
+
 
     // want the information for the movie to load as soon as the modal is opened and only then
     useEffect(() => {
@@ -25,8 +37,27 @@ function Modal({ movie, onClose }) {
             }
         };
 
+        const fetchMovieVideo = async () => {
+            const data = await getMovieVideo(movie.id);
+            if (data.results) {
+                setMovieVideo(data.results);
+            }
+        }
+
         fetchMovieInformation();
+        fetchMovieVideo();
     }, []);
+
+    // only trying to get trailer after we get all the video information
+    useEffect(() => {
+        if (movieVideo) {
+            const trailer = getMovieTrailer();
+            if (trailer) {
+                setMovieTrailer(trailer);
+            }
+        }
+    }, [movieVideo]);
+
 
     return (
         <div id="Modal">
@@ -43,7 +74,8 @@ function Modal({ movie, onClose }) {
                             {genres.map((obj) => {
                                 return <li key={obj.id}>{getGenreName(obj.id)}</li>;
                             })}
-                        </ul>
+                    </ul>
+                    {movieTrailer && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${movieTrailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />}
                     </div>
                     <p id="Modal-close" onClick={onClose}><strong>&times;</strong></p>
                 </div>

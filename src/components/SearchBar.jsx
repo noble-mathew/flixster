@@ -26,8 +26,10 @@ function SearchBar({ onSubmit, value }) {
     <div id="search-container">
         <form onReset={handleReset} onSubmit={handleSubmit}>
         <input name="movieInput" type="text" placeholder="Search" value={input} onChange={handleChange} />
-        <button type="submit">Search</button>
-        <button type="reset">Clear</button>
+        <div id="search-buttons">
+            <button type="submit">Search</button>
+            <button type="reset">Clear</button>   
+        </div>
         </form>
     </div>
     );

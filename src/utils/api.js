@@ -27,12 +27,26 @@ export async function getMovieData(pageNumber, movieName) {
     }
 }
 
-// gets all the information relevant to the specific movie
+// gets all the information relevant to the specific movie and is used mainly for genres and runtime
 export async function getMovieInformation(id) {
     try {
         const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options);
         if (!resp.ok) {
             throw new Error('Failed to fetch available genres');
+        }
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.error(`Fetch error: ${error}`);
+    }
+}
+
+// gets youtube videos for the respective movie
+export async function getMovieVideo(id) {
+    try {
+        const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options);
+        if (!resp.ok) {
+            throw new Error('Failed to fetch movie video');
         }
         const data = await resp.json();
         return data;
