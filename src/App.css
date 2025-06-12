@@ -317,7 +317,11 @@ footer p {
   justify-content: end;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
+  #Sidebar {
+    width: 40%;
+  }
+
   #Modal-content {
     width: 90%;
   }
