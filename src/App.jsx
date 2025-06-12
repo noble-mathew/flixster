@@ -17,6 +17,8 @@ const App = () => {
   const [sortOption, setSortOption] = useState("");
   const [resetDisplay, setResetDisplay] = useState(false);
   const [displayMovieData, setDisplayMovieData] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [watchedMovies, setWatchedMovies] = useState([]);
   const [displayModal, setDisplayModal] = useState(false);
   const [modalMovie, setModalMovie] = useState({});
 
@@ -70,6 +72,36 @@ const App = () => {
     setModalMovie({});            
   };
 
+  const addFavoriteMovie = (movie) => {
+    setFavoriteMovies((prev) => [...prev, movie]);
+  };
+
+  const removeFavoriteMovie = (removeMovie) => {
+    const newFavoriteMovies = favoriteMovies.filter(
+      (movie) => movie.id !== removeMovie.id
+    );
+    setFavoriteMovies(newFavoriteMovies);
+  };
+
+  const addWatchedMovie = (movie) => {
+    setWatchedMovies((prev) => [...prev, movie]);
+  };
+
+  const removeWatchedMovie = (removeMovie) => {
+    const newWatchedMovies = watchedMovies.filter(
+      (movie) => movie.id !== removeMovie.id
+    );
+    setWatchedMovies(newWatchedMovies);
+  };
+
+  useEffect(() => {
+  console.log("Favorite Movies:", favoriteMovies);
+}, [favoriteMovies]);
+
+useEffect(() => {
+  console.log("Watched Movies:", watchedMovies);
+}, [watchedMovies]);
+
   // updating what movies are displayed
   const loadMovies = async () => {
     let data = await getMovieData(pageNumber, searchQuery);
@@ -110,7 +142,7 @@ const App = () => {
         </div>
       </div>
       <main id="Movie-container">
-        <MovieList props={displayMovieData} onClick={openModal}/>
+        <MovieList props={displayMovieData} handlers={{ openModal, addFavoriteMovie, removeFavoriteMovie, addWatchedMovie, removeWatchedMovie }} favoriteMovies={favoriteMovies} watchedMovies={watchedMovies} />
         <LoadMore onClick={handleLoadMore} />
         {displayModal && <Modal onClose={closeModal} movie={modalMovie} />}
       </main>

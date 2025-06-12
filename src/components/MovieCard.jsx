@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import "../App.css"
 
-function MovieCard({ onClick, poster, title, rating }) {
-    const [watched, setWatched] = useState(false);
-    const [favorite, setFavorite] = useState(false);
+function MovieCard({ poster, title, rating, onOpenModal, onAddFavorite, onRemoveFavorite, onAddWatched, onRemoveWatched, isFavorite, isWatched }) {
+    const [watched, setWatched] = useState(isWatched);
+    const [favorite, setFavorite] = useState(isFavorite);
 
     const handleWatchedChange = (event) => {
         event.stopPropagation();
-        setWatched(!watched)
+        setWatched(prev => !prev);
     }
 
     const handleFavoriteChange = (event) => {
         event.stopPropagation();
-        setFavorite(!favorite);
+        setFavorite(prev => !prev);
     }
 
+    useEffect(() => {
+        watched ? onAddWatched() : onRemoveWatched();
+    }, [watched]);
+
+    useEffect(() => {
+        favorite ? onAddFavorite() : onRemoveFavorite();
+    }, [favorite]);
+
     return (
-        <div id="Movie-card" onClick={onClick}>
-            <img onClick={handleWatchedChange} id="watch-icon" src={watched ? "/public/watched.png" : "/public/not-watched.png"} />
-            <img onClick={handleFavoriteChange}  id="favorite-icon" src={favorite ? "/public/favorite.png" : "/public/not-favorite.png"} />
+        <div id="Movie-card" onClick={onOpenModal}>
+            <img id="watch-icon" src={watched ? "/watched.png" : "/not-watched.png"} onClick={handleWatchedChange} />
+            <img id="favorite-icon" src={favorite ? "/favorite.png" : "/not-favorite.png"} onClick={handleFavoriteChange} />
             <img src={poster} alt={`poster for ${title}`}/>
             <div id="Movie-card-footer">
                 <h4>{title}</h4>
