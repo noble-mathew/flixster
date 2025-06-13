@@ -62,6 +62,21 @@
   cursor: pointer;
 }
 
+#menu-container {
+  position: fixed;
+  left: 0.75%;
+  top: 2.5%;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(188, 188, 188);
+  border-radius: 20%;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+  -ms-border-radius: 20%;
+  -o-border-radius: 20%;
+  z-index: 4;
+}
+
 #menu {
   height: 30px;
   width: 30px;
@@ -73,6 +88,10 @@
 
 #menu:hover {
   cursor: pointer;
+}
+
+.active {
+  text-decoration: underline;
 }
 
 #filter {

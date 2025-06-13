@@ -173,8 +173,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <img id="menu" src="/menu.png" onClick={handleDisplaySideBar}/>
-      {displaySideBar && <SideBar onClose={handleDisplaySideBar} onNowPlaying={goToHome} onFavorite={goToFavorite} onWatched={goToWatched} />}
+      <div id="menu-container">
+        <img id="menu" src="/menu.png" onClick={handleDisplaySideBar}/>
+      </div>
+      {displaySideBar && <SideBar onClose={handleDisplaySideBar} onNowPlaying={goToHome} onFavorite={goToFavorite} onWatched={goToWatched} isFavorite={displayFavoriteMovies} isWatched={displayWatchedMovies}/>}
       <div className="App-header">
         <AppHeader onClick={goToHome} />
         <div id="filter">
