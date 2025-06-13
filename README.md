@@ -2,9 +2,9 @@
 
 Submitted by: **Noble Mathew**
 
-Estimated time spent: **20** hours spent in total
+Estimated time spent: **22** hours spent in total
 
-Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-9bvy.onrender.com/)
+Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-9bvy.onrender.com)
 
 ### Application Features
 
@@ -59,10 +59,10 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
     - [ X ] Search bar
     - [ X ] Movie grid
     - [ X ] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
+    - [ X ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
   - [ X ] **Deployment**
   - [ X ] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
+  - [ X ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
 
 #### STRETCH FEATURES
 
@@ -100,23 +100,22 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`https://youtu.be/42trLMWAtxc`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I believe that the topics discussed and the labs helped me a lot with the development of my project. I didn't feel unprepared to complete any of the features.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I definitely would've tried to better the UI/UX of my website and more user interaction features.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think most things went very well. I felt good about the project that I put out and the improvements that I made
+from last week's project.
 
 ### Open-source libraries used
 
@@ -129,7 +128,7 @@ Give a shout out to somebody from your cohort that especially helped you during 
 - Ebony
 - Matthew
 - Thomas
-- Versaviya
+- Virsaviya
 - Yaw
 - Caleb
 - Braden
