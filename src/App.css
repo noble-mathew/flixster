@@ -8,7 +8,7 @@
   z-index: 1;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
   overflow: auto;
   animation: show 0.5s;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-#menu-container {
+/* #menu-container {
   position: fixed;
   left: 0.75%;
   top: 2.5%;
@@ -75,7 +75,7 @@
   -ms-border-radius: 20%;
   -o-border-radius: 20%;
   z-index: 4;
-}
+} */
 
 #menu {
   height: 30px;
